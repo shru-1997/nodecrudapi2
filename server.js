@@ -36,12 +36,11 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
          .catch(error=>res.send(error))
         })
 
-    
 
 
 }).catch(error=>console.error(error))
 
  const PORT = 3000
- app.listen(PORT, (req,res) => {
+app.listen(PORT, (req,res) => {
     console.log(`Server is Running on PORT: ${PORT}`)
 })
