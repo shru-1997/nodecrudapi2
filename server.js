@@ -21,26 +21,29 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
      app.post('/quotes',(req,res)=>{
           quotesCollection.insertOne(req.body)
           .then(result=>{
-              res.send(result)
+              console.log(result)
           })
 
-          .catch(error=>res.send(error))
+          .catch(error=>console.log(error))
         })
     
-     app.get('/getall',(req,res)=>{
-        quotesCollection.find().toArray()
-        .then(result=>{
-            res.send(result)
-        })
+   app.get('/getall',(req,res)=>{
+      quotesCollection.find().toArray()
+      .then(result=>{
+          console.log(result)
+      })
           
-         .catch(error=>res.send(error))
-        })
+        .catch(error=>console.log(error))
+       })
 
 
 
-}).catch(error=>console.error(error))
+}).catch(console.error)
 
- const PORT = 3000
+app.get('/',(req,res)=>{
+    res.sendFile(__dirname + '/index.html')
+})
+ const PORT = 5000
 app.listen(PORT, (req,res) => {
     console.log(`Server is Running on PORT: ${PORT}`)
 })
